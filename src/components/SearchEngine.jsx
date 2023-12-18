@@ -4,19 +4,18 @@ import './style.scss'
 import useDebounce from './useDebounce';
 
 function SearchEngine() {
+  console.log("env",process.env.REACT_APP_API_KEY)
   const [value,setValue] = useState("");
   const [list, setList] = useState([]);
   const[pageCounts, setPageCounts] = useState(0)
   const[activePageNumber, setActivePageNumber] = useState(1)
 
   const debounceValue = useDebounce(value)
-  
   const SearchReq = useCallback(
     async() => {
-      const response = await fetch(`https://api.escuelajs.co/api/v1/products/?title=${debounceValue}`);
+      const response = await fetch(`${process.env.REACT_APP_API_KEY}?title=${debounceValue}`);
       const data =await response.json();
       setList(data)
-      console.log("data",data)
     },
     [debounceValue]
   );

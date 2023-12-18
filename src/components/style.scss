@@ -55,6 +55,10 @@
       color: #3a5a40;
       text-decoration: none;
       line-height: 35px;
+      transition: all .5s ease;
+      &:hover{
+        color: #eb5e28;
+      }
     }
     .info{
       color: #353535;
